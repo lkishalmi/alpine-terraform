@@ -7,6 +7,11 @@ RUN cd /usr/local/bin && \
 
 RUN apk --update add git openssh
 
+ADD rootfs /
+RUN chown -R root:root /root
+RUN chmod 700 /root/.ssh
+RUN chmod 600 /root/.ssh/*
+
 WORKDIR /work
 
 CMD ["/bin/bash"]
