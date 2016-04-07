@@ -6,6 +6,7 @@ RUN cd /usr/local/bin && \
     rm terraform_0.6.14_linux_amd64.zip
 
 RUN apk --update add git openssh
+RUN apk --update add nodejs
 
 ADD rootfs /
 RUN chown -R root:root /root
