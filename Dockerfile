@@ -1,4 +1,4 @@
-FROM dsop/alpine-nodejs
+FROM dsop/alpine-base
 
 ENV GLIBC 2.23-r3
 ENV TERRAFORM_VERSION 0.6.16
@@ -13,7 +13,8 @@ RUN cd /usr/local/bin && \
     unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
     rm terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 
-RUN apk --update add git openssh-client
+RUN apk --update add git openssh-client && \
+  rm -rf /var/cache/apk/*
 
 WORKDIR /work
 
